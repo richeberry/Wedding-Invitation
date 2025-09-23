@@ -1,21 +1,18 @@
-// 계좌번호 토글
-
+//계좌 토글
 function toggleAccount(element) {
   const info = element.nextElementSibling;
-  const allInfo = document.querySelectorAll('.account-info');
+  const allInfos = document.querySelectorAll('.account-info');
 
-  // 다른 박스 닫기
-  allInfo.forEach(el => {
-    if (el !== info) el.style.display = "none";
+  allInfos.forEach(i => {
+    if (i !== info) i.classList.remove('active');  // 다른 계좌는 닫기
   });
 
-  // 클릭한 계좌 토글
-  info.style.display = (info.style.display === "block") ? "none" : "block";
+  info.classList.toggle('active');  // 현재 클릭한 계좌만 열고 닫기
 }
 
 function copyAccount(event, text) {
-  event.stopPropagation(); // 부모 클릭 이벤트 방지
+  event.stopPropagation();
   navigator.clipboard.writeText(text).then(() => {
-    alert("계좌번호가 복사되었습니다.");
+    alert('계좌번호가 복사되었습니다!');
   });
 }

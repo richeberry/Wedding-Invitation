@@ -42,8 +42,8 @@
 <!-------------- page 1 결혼 날짜 --------------------->
 <section class="page page1">
   <div class="page-inner page1-inner">
-    <h2 class="section-title">결혼식 안내</h2>
-    <div class="wedding-date">2025. 11. 09</div>
+    <h2 class="wedding-notice">결혼합니다</h2>
+    <div class="wedding-date">2025년 11월 9일 <br>일요일 오후 1시</div>
   </div>
 </section>
 
@@ -106,14 +106,16 @@
             
             <div class="route-section">
                 <div class="route-btn-group">
-                    <a href="https://map.kakao.com/link/to/더엠컨벤션,35.550560,129.136880" 
-                       target="_blank" class="route-btn">
+                    <a href="https://map.kakao.com/link/to/더엠컨벤션,35.5486, 129.1392" 
+                    target="_blank" class="route-btn">
                         <span>카카오 길찾기</span>
                     </a>
-                    <a href="https://map.naver.com/v5/directions/-/place/1824752930" 
-                       target="_blank" class="route-btn">
-                        <span>네이버 길찾기</span>
-                    </a>
+
+                    <a href="https://map.naver.com/p/search/%EB%8D%94%EC%97%A0%EC%BB%A8%EB%B2%A4%EC%85%98/place/1824752930" target="_blank" class="route-btn">
+    <span>네이버 길찾기</span>
+</a>
+
+
                 </div>
                 
                 <div class="bus-info">
@@ -130,49 +132,38 @@
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1b87979187b428de05949b9a77ffb0fe"></script>
     <script>
+        // 지도 초기화 함수
         function initializeMap() {
             const mapContainer = document.getElementById('map');
+            mapContainer.style.display = 'block'; // 부모가 보이도록
             const mapLoading = document.getElementById('map-loading');
             
             const mapOption = {
-                center: new kakao.maps.LatLng(35.5486, 129.1392),
+                center: new kakao.maps.LatLng(35.5486, 129.1392), // 지도의 중심 좌표
                 level: 4
             };
 
             try {
                 const map = new kakao.maps.Map(mapContainer, mapOption);
-                
+                map.relayout(); // 부모 크기를 재인식
+                map.setCenter(new kakao.maps.LatLng(35.5486, 129.1392)); // 중심 좌표 재설정
+
+                // 마커 위치
                 const position = new kakao.maps.LatLng(35.5486, 129.1392);
                 
+                // 마커 생성
                 const marker = new kakao.maps.Marker({
                     position: position
                 });
                 
                 marker.setMap(map);
-                
-                const iwContent = `
-                    <div style="padding: 15px 20px; text-align: center; font-family: inherit; border: 1px solid #000; background: #fff;">
-                        <div style="font-weight: 400; color: #000; margin-bottom: 5px; font-size: 0.95rem;">
-                            송이💙진섭 결혼식
-                        </div>
-                        <div style="font-size: 0.85rem; color: #666; font-weight: 300;">
-                            더엠컨벤션 9층
-                        </div>
-                    </div>
-                `;
-                
-                const infowindow = new kakao.maps.InfoWindow({
-                    content: iwContent,
-                    removable: true
-                });
-                
-                kakao.maps.event.addListener(marker, 'click', function() {
-                    infowindow.open(map, marker);
-                });
-                
+
+
+                // 로딩 완료 후 지도 표시
                 mapLoading.style.display = 'none';
                 mapContainer.style.display = 'block';
                 
+                // 지도 크기 재조정
                 setTimeout(() => {
                     map.relayout();
                 }, 100);
@@ -189,7 +180,7 @@
                 `;
             }
         }
-
+// 카카오맵 API 로드 완료 후 지도 초기화
         if (typeof kakao !== 'undefined' && kakao.maps) {
             kakao.maps.load(initializeMap);
         } else {
@@ -202,8 +193,9 @@
                 </div>
             `;
         }
-
+// 페이지 로드 완료 후 부드러운 스크롤 활성화
         document.addEventListener('DOMContentLoaded', function() {
+            // 외부 링크 클릭 시 부드러운 피드백 
             const routeBtns = document.querySelectorAll('.route-btn');
             routeBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -267,6 +259,12 @@ lightbox.addEventListener("click", (e) => {
 
 <!-------------- page 6 마음 전할 곳 --------------------->
 
+<div class="page6-wrapper">
+  <h2 class="section-title">마음 전할 곳</h2>
+  <p class="page6-note">
+    결혼식에 직접 참석하기 어려우신 분들을 위해,<br> 
+    따뜻한 마음을 전하실 수 있는 계좌 안내입니다.
+  </p>
 
   <!-- 신랑측 아버지 -->
   <div class="account-box">
@@ -312,6 +310,8 @@ lightbox.addEventListener("click", (e) => {
       <button class="copy-btn" onclick="copyAccount(event, '하나 567-8901-2345-67')">복사</button>
     </div>
   </div>
+</div>
+
 
   <script src="script.js"></script>
 

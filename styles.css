@@ -54,7 +54,7 @@ html, body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  min-height: 105vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +72,7 @@ html, body {
   align-items: center;
   justify-content: center;
   margin: 0 auto 10%;
-  margin-top: 30%;
+  margin-top: 10%;
 }
 
 .border-inner {
@@ -111,33 +111,48 @@ html, body {
 /* Page 1 결혼 날 */
 
 .page1 {
-  background: #fff;
-  padding: 60px 20px;
-  text-align: center;
+    background-image: url('images/page1-background.jpg');
+    background-position: center center; /* 가로, 세로 중앙 */
+    background-repeat: no-repeat;       /* 반복 안함 */
+    background-size: 160%;             /* 조금 확대해서 위, 아래부분 자르기 */
+    padding: 60px 10px;
+    text-align: center;
 }
 
 .page1-inner {
-  max-width: 400px;
-  margin: 0 auto;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 위-아래로 분리 */
+    height: 430px; /* inner 높이 지정: 필요에 따라 조절 */
 }
 
+.wedding-notice {
+    font-size: 2rem;
+    color: #000;
+    text-align: center;
+    font-family: 'Grandiflora One', serif;
+
+}
 .wedding-date {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #222;
-  margin: 20px 0 10px;
-  font-family: 'Grandiflora One', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #222;
+    text-align: center;
+    font-family: 'Grandiflora One', serif;
+    margin-top: 30px;
 }
 
 /* Page 2: 인사말 및 가족 소개 */
 .page2 {
-  background: #fafafa;
+  background: #d6d7d1a7;
 }
 
 .greeting {
   font-size: 1rem;
   line-height: 1.8;
-  color: #555;
+  color: #250601;
   margin-bottom: 40px;
 }
 
@@ -159,7 +174,7 @@ html, body {
 .prefix {
   width: 30px;
   font-size: 0.8rem;
-  color: #888;
+  color: #4d403a;
 }
 
 .main-line {
@@ -197,286 +212,286 @@ html, body {
 }
 
 /* Page 4: 예식장 정보 및 지도 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #000;
-            background: #fff;
-            min-height: 100vh;
-        }
+    body {
+        font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: #000;
+        background: #fff;
+        min-height: 100vh;
+    }
 
+    .page4 {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+    }
+
+    .page4-wrapper {
+        max-width: 800px;
+        width: 100%;
+        border: 2px solid #000;
+        position: relative;
+    }
+
+    .section-title {
+        font-size: 3rem;
+        font-weight: 300;
+        text-align: center;
+        color: #000;
+        margin: 60px 0 30px 0;
+        letter-spacing: 2px;
+        position: relative;
+    }
+
+    .wedding-info {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #000;
+        margin: 0 40px 50px 40px;
+        line-height: 1.8;
+        font-weight: 300;
+        position: relative;
+        padding: 30px 0;
+    }
+
+    .wedding-info::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #000;
+    }
+
+    .wedding-info::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #000;
+    }
+
+    .map-container {
+        margin: 0 auto;
+        border: 1px solid #000;
+        position: relative;
+    }
+
+    #map {
+        width: 100%;
+        height: 400px;
+        filter: grayscale(30%);
+    }
+
+    .map-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+        background: #fff;
+        color: #000;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    .loading-spinner {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #ccc;
+        border-top: 1px solid #000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-right: 12px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .route-section {
+        padding: 40px;
+    }
+
+    .route-btn-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+
+    .route-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        border: 1px solid #000;
+        background: #fff;
+        color: #000000;
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 400;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .route-btn:hover {
+        background: #ffffff;
+        color: #000000;
+    }
+
+    .route-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: #e4d3becd;
+        transition: left 0.3s ease;
+        z-index: 0;
+    }
+
+    .route-btn:hover::before {
+        left: 0;
+    }
+
+    .route-btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .bus-info {
+        text-align: center;
+        position: relative;
+        padding: 40px 30px;
+        max-width: none; /* 폭 제한 제거 */
+        width: 100%; /* 화면 전체 폭 사용 */
+        margin: 0 auto;
+        /* border: 1px solid #000; */
+    }
+
+    .bus-info::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 2px;
+        background: #fff;
+    }
+
+    .bus-info::after {
+        /* content: '🚌'; */
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #fff;
+        padding: 0 10px;
+        font-size: 1.2rem;
+    }
+
+    .bus-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        font-weight: 400;
+        color: #000;
+    }
+
+    .bus-info p {
+        display: block; /* 블록으로 만듦 */
+        white-space: nowrap; /* 한 줄 유지 */
+        margin: 0 auto; /* 중앙 정렬 */
+        font-size: 0.8rem;
+        line-height: 1.8;
+        color: #000;
+        font-weight: 300;
+    }
+
+    /* 세로선 장식 */
+    .page4-wrapper::before,
+    .page4-wrapper::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        bottom: 20px;
+        width: 1px;
+        background: #000;
+    }
+
+    .page4-wrapper::before {
+        left: 20px;
+    }
+
+    .page4-wrapper::after {
+        right: 20px;
+    }
+
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
         .page4 {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
+            padding: 40px 16px;
         }
 
         .page4-wrapper {
-            max-width: 800px;
-            width: 100%;
-            border: 2px solid #000;
-            position: relative;
+            border: 1px solid #000;
+        }
+
+        .page4-wrapper::before,
+        .page4-wrapper::after {
+            display: none;
         }
 
         .section-title {
-            font-size: 3rem;
-            font-weight: 300;
-            text-align: center;
-            color: #000;
-            margin: 60px 0 30px 0;
-            letter-spacing: 2px;
-            position: relative;
+            font-size: 2.2rem;
+            margin: 40px 0 20px 0;
+            letter-spacing: 1px;
         }
 
-        .wedding-info {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #000;
-            margin: 0 40px 50px 40px;
-            line-height: 1.8;
-            font-weight: 300;
-            position: relative;
-            padding: 30px 0;
-        }
-
-        .wedding-info::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #000;
-        }
-
-        .wedding-info::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #000;
-        }
-
-        .map-container {
-            margin: 0 40px;
-            border: 1px solid #000;
-            position: relative;
+        .wedding-info,
+        .map-container,
+        .route-section {
+            margin-left: 20px;
+            margin-right: 20px;
         }
 
         #map {
-            width: 100%;
-            height: 400px;
-            filter: grayscale(70%);
-        }
-
-        .map-loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 400px;
-            background: #fff;
-            color: #000;
-            font-size: 1rem;
-            font-weight: 300;
-        }
-
-        .loading-spinner {
-            width: 16px;
-            height: 16px;
-            border: 1px solid #ccc;
-            border-top: 1px solid #000;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-right: 12px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .route-section {
-            padding: 40px;
+            height: 300px;
         }
 
         .route-btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 50px;
+            /* flex-direction: column; */
+            align-items: center;
+            gap: 12px;
         }
 
         .route-btn {
-            display: inline-block;
-            padding: 6px 12px;
-            border: 1px solid #000;
-            background: #fff;
-            color: #000;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 400;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .route-btn:hover {
-            background: #000;
-            color: #fff;
-        }
-
-        .route-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            transition: left 0.3s ease;
-            z-index: 0;
-        }
-
-        .route-btn:hover::before {
-            left: 0;
-        }
-
-        .route-btn span {
-            position: relative;
-            z-index: 1;
+            padding: 10px 20px;
+            font-size: 0.85rem;
         }
 
         .bus-info {
-            text-align: center;
-            position: relative;
-            padding: 40px 30px;
-            max-width: none; /* 폭 제한 제거 */
-            width: 100%; /* 화면 전체 폭 사용 */
-            margin: 0 auto;
-            /* border: 1px solid #000; */
+            padding: 30px 20px;
         }
+    }
 
-        .bus-info::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background: #fff;
-        }
-
-        .bus-info::after {
-            /* content: '🚌'; */
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #fff;
-            padding: 0 10px;
-            font-size: 1.2rem;
-        }
-
-        .bus-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            font-weight: 400;
-            color: #000;
-        }
-
-        .bus-info p {
-            display: block; /* 블록으로 만듦 */
-            white-space: nowrap; /* 한 줄 유지 */
-            margin: 0 auto; /* 중앙 정렬 */
-            font-size: 0.8rem;
-            line-height: 1.8;
-            color: #000;
-            font-weight: 300;
-        }
-
-        /* 세로선 장식 */
-        .page4-wrapper::before,
-        .page4-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            bottom: 20px;
-            width: 1px;
-            background: #000;
-        }
-
-        .page4-wrapper::before {
-            left: 20px;
-        }
-
-        .page4-wrapper::after {
-            right: 20px;
-        }
-
-        /* 모바일 대응 */
-        @media (max-width: 768px) {
-            .page4 {
-                padding: 40px 16px;
-            }
-
-            .page4-wrapper {
-                border: 1px solid #000;
-            }
-
-            .page4-wrapper::before,
-            .page4-wrapper::after {
-                display: none;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-                margin: 40px 0 20px 0;
-                letter-spacing: 1px;
-            }
-
-            .wedding-info,
-            .map-container,
-            .route-section {
-                margin-left: 20px;
-                margin-right: 20px;
-            }
-
-            #map {
-                height: 300px;
-            }
-
-            .route-btn-group {
-                /* flex-direction: column; */
-                align-items: center;
-                gap: 12px;
-            }
-
-            .route-btn {
-                padding: 10px 20px;
-                font-size: 0.85rem;
-            }
-
-            .bus-info {
-                padding: 30px 20px;
-            }
-        }
-
-        /* 인포윈도우 커스텀 스타일 */
-        .custom-infowindow {
-            border: 1px solid #000 !important;
-            background: #fff !important;
-        }
+    /* 인포윈도우 커스텀 스타일 */
+    .custom-infowindow {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+    }
 
 
 /* Page 5: 갤러리 */
@@ -525,66 +540,97 @@ html, body {
 }
 
 .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-/* page 6 */
+/* page 6 마음 전할 곳*/
+    .page6-wrapper {
+        max-width: 400px;
+        margin: auto; /* 화면 중앙, 위쪽 여유 */
+        padding: 20px;
+        background: #fff;
+        /* border-radius: 12px; */
+        box-shadow: 0 6px 15px #c4bdac76;
+        font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    }
 
-/* Page 6: 마음 전할 곳 */
-.page6 {
-  background: #fffdf8;
-  padding: 40px 20px;
-}
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 30px;
+        color: #222;
+    }
 
-.page6-inner {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-}
+    .account-box { /* ㅇㅇㅇ 박스 */
+        width: 250px;        /* 원하는 가로 길이 */
+        margin: 0 auto;
+        margin-bottom: 10px;
+        /* border-radius: 8px; */
+        overflow: hidden;
+        border: 1px solid #c4bdac76;
+        background: #ffffff;
+        
+    }
 
-.account-box {
-  margin: 15px auto;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: #fff;
-  transition: all 0.2s;
-}
+    .page6-name {
+        padding: 5px 7px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: 500;
+        color: #333;
+        background: #c4bdac76;
+        transition: background 0.3s ease;
+    }
 
-.account-box:hover {
-  background: #fafafa;
-}
+    .page6-name:hover {
+        background: #c4bdac76;
+    }
 
-.page6-name {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #444;
-  cursor: pointer;
-}
+    .page6-note {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 40px;
+    }
 
-.account-info {
-  margin-top: 10px;
-  display: none;
-  font-size: 0.95rem;
-  color: #555;
-}
+    .account-info {
+        max-height: 0;           /* 접힌 상태 */
+        overflow: hidden;         /* 내용 넘침 숨김 */
+        padding: 0 20px;          /* 좌우 패딩만 기본 */
+        background: #fff;
+        font-size: 0.9rem;
+        color: #555;
+        display: flex;
+        justify-content: center;   /* 중앙 정렬 */
+        align-items: center;
+        gap: 10px;                /* 글자와 버튼 간 간격 */
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
 
-button.copy-btn {
-  margin-top: 8px;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  background: #f0c14b;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
+    .account-info.active {
+        max-height: 60px;         /* 열렸을 때 높이 */
+        padding: 12px 20px;       /* 열렸을 때 패딩 */
+    }
 
-button.copy-btn:hover {
-  background: #e2b236;
-}
+    .copy-btn {
+        padding: 3px 7px;         /* 버튼 폭 조금 줄임 */
+        font-size: 0.8rem;
+        border: 1px solid #333;
+        background: #fff;
+        color: #333;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+
+    .copy-btn:hover {
+        background: #333;
+        color: #fff;
+    }
