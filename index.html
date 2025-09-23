@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <!-- 필수 메타태그: 확대 줌 막기 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+  <title>진섭 & 송이 결혼합니다</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- 폰트 로드 -->
+  <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <script>
+    // 터치 이벤트 제어
+    document.addEventListener('touchstart', function(e) {
+      if (e.touches.length > 1) e.preventDefault();
+    }, { passive: false });
+
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(e) {
+      let now = Date.now();
+      if (now - lastTouchEnd <= 300) e.preventDefault();
+      lastTouchEnd = now;
+    }, { passive: false });
+
+    // 지도 탭 전환 함수
+    function showMap(event, mapType) {
+      // 모든 탭에서 active 클래스 제거
+      const tabs = document.querySelectorAll('.map-tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      // 클릭된 탭에 active 클래스 추가
+      event.target.classList.add('active');
+      
+      // 모든 지도 프레임 숨기기
+      const frames = document.querySelectorAll('.map-frame');
+      frames.forEach(frame => frame.classList.remove('active'));
+      
+      // 선택된 지도 프레임 보이기
+      const selectedFrame = document.querySelector(`.${mapType}-map`);
+      if (selectedFrame) {
+        selectedFrame.classList.add('active');
+      }
+    }
+
+    // 페이지 로드 시 네이버맵을 기본으로 표시
+    document.addEventListener('DOMContentLoaded', function() {
+      const naverMap = document.querySelector('.naver-map');
+      if (naverMap) {
+        naverMap.classList.add('active');
+      }
+    });
+  </script>
+</head>
+
+<body>
+
+  <!-- Page 1: 메인 -->
+  <section class="page page1">
+    <div class="page-inner">
+      <div class="border-outer">
+        <div class="border-inner">
+          <img src="images/couple-photo.jpg" alt="커플 사진" class="couple-photo" />
+        </div>
+      </div>
+      <h1 class="name">진섭<br>&<br>송이</h1>
+      <p class="date">25. 11. 09</p>
+    </div>
+  </section>
+
+  <!-- Page 2: 인사말 및 가족 소개 -->
+  <section class="page page2">
+    <div class="page-inner">
+      <p class="greeting">
+        하나가 되는 뜻깊은 날을 맞이하게 되었습니다.<br><br>
+        그 새로운 시작의 순간<br>
+        귀한 걸음 하시어<br>
+        축복해주시면 큰 기쁨으로 간직하겠습니다.
+      </p>
+      <div class="family-block">
+        <div class="family-line">
+          <span class="prefix">(故)</span>
+          <span class="main-line">
+            <span class="parents">송준천 ・ 도경순</span>
+            <span class="relation">의 장녀</span>
+            <span class="parents">송이</span>
+          </span>
+        </div>
+        <div class="family-line">
+          <span class="prefix"></span>
+          <span class="main-line">
+            <span class="parents">김영도 ・ 권혁자</span>
+            <span class="relation">의 차남</span>
+            <span class="parents">진섭</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 3: 캘린더/일정 -->
+  <section class="page page3">
+    <div class="page-inner">
+      <h2 class="section-title">웨딩 일정</h2>
+      <p class="calendar-description">
+        2025년 11월 9일 토요일<br>
+        오후 12시 30분<br><br>
+        소중한 분들과 함께하는<br>
+        특별한 시간이 되겠습니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- Page 4: 예식장 정보 및 지도 -->
+  <section class="page page4">
+    <div class="page-inner">
+      <h2 class="section-title">예식 정보</h2>
+      <p class="wedding-info">
+        울산광역시 남구 삼산로 283<br />
+        더엠컨벤션 3층 그랜드홀
+      </p>
+
+      <div class="map-container">
+        <div class="map-tabs">
+          <button class="map-tab active" onclick="showMap(event,'naver')">네이버맵</button>
+          <button class="map-tab" onclick="showMap(event,'google')">구글맵</button>
+        </div>
+
+        <div class="map-content">
+          <!-- 네이버맵 iframe -->
+          <iframe class="map-frame naver-map"
+            src="https://map.naver.com/v5/?c=129.136880,35.550560,15,0,0,0,d" 
+            width="100%" height="250" style="border:0;" allowfullscreen>
+          </iframe>
+
+          <!-- 구글맵 iframe -->
+          <iframe class="map-frame google-map"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3982.6248447759813!2d129.13688049728566!3d35.550560193476635!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356625796f19cb63%3A0x1d55afc54abf9bc1!2z642U7Jeg7Luo67Kk7IWY!5e0!3m2!1sen!2skr!4v1758296862070!5m2!1sen!2skr"
+            width="100%" height="250" style="border:0;" allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="bus-info">
+        <h3>🚌 버스 대절 안내</h3>
+        <p>
+          편리한 교통을 위해<br>
+          버스 대절을 준비하였습니다.<br><br>
+          자세한 사항은 별도 안내드리겠습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 5: 갤러리 -->
+  <section class="page page5">
+    <div class="page-inner">
+      <h2 class="section-title">갤러리</h2>
+      <div class="gallery-grid">
+        <img src="images/gallery1.jpg" alt="사진 1" />
+        <img src="images/gallery2.jpg" alt="사진 2" />
+        <img src="images/gallery3.jpg" alt="사진 3" />
+        <img src="images/gallery4.jpg" alt="사진 4" />
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
