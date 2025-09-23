@@ -26,19 +26,26 @@
 
 
 <body>
-<!-------------- page 1 메인 --------------------->
+<!-------------- page 0 메인 --------------------->
 
-  <section class="page page1">
+  <section class="page page0">
     <div class="page-inner">
       <div class="border-outer">
         <div class="border-inner">
           <img src="images/couple-photo.jpg" alt="커플 사진" class="couple-photo" />
         </div>
       </div>
-      <h1 class="name">진섭<br>&<br>송이</h1>
-      <p class="date">25. 11. 09</p>
+      <h1 class="page0-name">진섭 & 송이</h1>
     </div>
   </section>
+
+<!-------------- page 1 결혼 날짜 --------------------->
+<section class="page page1">
+  <div class="page-inner page1-inner">
+    <h2 class="section-title">결혼식 안내</h2>
+    <div class="wedding-date">2025. 11. 09</div>
+  </div>
+</section>
 
 <!-------------- page 2 인사말 및 가족소개 --------------------->
   <section class="page page2">
@@ -80,95 +87,233 @@
 
 
 <!-------------- page 4 오시는 길 --------------------->
-<!-- 주소 -->
 <section class="page page4">
-  <div class="page4-wrapper">
-    <!-- 오시는 길 제목 -->
-    <h2 class="section-title">오시는 길</h2>
-    <p class="wedding-info">
-      울산광역시 남구 삼산로 283<br>
-      더엠컨벤션 3층 그랜드홀
-    </p>
+        <div class="page4-wrapper">
+            <h2 class="section-title">오시는 길</h2>
+            
+            <div class="wedding-info">
+                울산광역시 남구 삼산로 283<br>
+                더엠컨벤션 9층 펠리시타홀
+            </div>
+            
+            <div class="map-container">
+                <div id="map-loading" class="map-loading">
+                    <div class="loading-spinner"></div>
+                    지도를 불러오는 중...
+                </div>
+                <div id="map" style="display: none;"></div>
+            </div>
+            
+            <div class="route-section">
+                <div class="route-btn-group">
+                    <a href="https://map.kakao.com/link/to/더엠컨벤션,35.550560,129.136880" 
+                       target="_blank" class="route-btn">
+                        <span>카카오 길찾기</span>
+                    </a>
+                    <a href="https://map.naver.com/v5/directions/-/place/1824752930" 
+                       target="_blank" class="route-btn">
+                        <span>네이버 길찾기</span>
+                    </a>
+                </div>
+                
+                <div class="bus-info">
+                    <h3>버스 대절 안내</h3>
+                    <p>
+                        모임 장소: 제천 올림픽 스포츠센터 (88체육관)<br>
+                        출발: 오전 9시 / 도착: 오후 5시<br>
+                        자세한 사항은 별도 안내드립니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1b87979187b428de05949b9a77ffb0fe"></script>
+    <script>
+        function initializeMap() {
+            const mapContainer = document.getElementById('map');
+            const mapLoading = document.getElementById('map-loading');
+            
+            const mapOption = {
+                center: new kakao.maps.LatLng(35.5486, 129.1392),
+                level: 4
+            };
 
-    <!-- 지도 전용 컨테이너 -->
-    <div class="map-fullwidth">
-      <div id="map"></div>
-    </div>
+            try {
+                const map = new kakao.maps.Map(mapContainer, mapOption);
+                
+                const position = new kakao.maps.LatLng(35.5486, 129.1392);
+                
+                const marker = new kakao.maps.Marker({
+                    position: position
+                });
+                
+                marker.setMap(map);
+                
+                const iwContent = `
+                    <div style="padding: 15px 20px; text-align: center; font-family: inherit; border: 1px solid #000; background: #fff;">
+                        <div style="font-weight: 400; color: #000; margin-bottom: 5px; font-size: 0.95rem;">
+                            송이💙진섭 결혼식
+                        </div>
+                        <div style="font-size: 0.85rem; color: #666; font-weight: 300;">
+                            더엠컨벤션 9층
+                        </div>
+                    </div>
+                `;
+                
+                const infowindow = new kakao.maps.InfoWindow({
+                    content: iwContent,
+                    removable: true
+                });
+                
+                kakao.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map, marker);
+                });
+                
+                mapLoading.style.display = 'none';
+                mapContainer.style.display = 'block';
+                
+                setTimeout(() => {
+                    map.relayout();
+                }, 100);
+                
+            } catch (error) {
+                console.error('지도 로딩 중 오류 발생:', error);
+                mapLoading.innerHTML = `
+                    <div style="text-align: center; color: #000; font-weight: 300;">
+                        <div>지도를 불러올 수 없습니다</div>
+                        <div style="font-size: 0.9rem; margin-top: 8px;">
+                            길찾기 버튼을 이용해주세요
+                        </div>
+                    </div>
+                `;
+            }
+        }
 
-    <div class="bus-info">
-      <h3>🚌 버스 대절 안내</h3>
-      <p>
-        편리한 교통을 위해<br>
-        버스 대절을 준비하였습니다.<br>
-        자세한 사항은 별도 안내드립니다.
-      </p>
-    </div>
-  </div>
-</section>
+        if (typeof kakao !== 'undefined' && kakao.maps) {
+            kakao.maps.load(initializeMap);
+        } else {
+            document.getElementById('map-loading').innerHTML = `
+                <div style="text-align: center; color: #000; font-weight: 300;">
+                    <div>지도 서비스를 불러올 수 없습니다</div>
+                    <div style="font-size: 0.9rem; margin-top: 8px;">
+                        길찾기 버튼을 이용해주세요
+                    </div>
+                </div>
+            `;
+        }
 
-
-<!-- 지도 부분 -->
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APP KEY"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(35.5486, 129.1392), // 지도 중심좌표 (울산 더엠컨벤션)
-        level: 4 // 지도 확대 레벨
-    };
-
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-// 마커를 표시할 위치
-var position = new kakao.maps.LatLng(35.5486, 129.1392);
-
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-  position: position
-});
-
-// 마커를 지도 위에 표시
-marker.setMap(map);
-
-
-// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-var iwContent = '<div style="padding:5px;">송이🩵진섭 결혼식</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-
-// 인포윈도우를 생성합니다
-var infowindow = new kakao.maps.InfoWindow({
-    content : iwContent
-});
-
-// 마커에 마우스오버 이벤트를 등록합니다
-kakao.maps.event.addListener(marker, 'mouseover', function() {
-  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-    infowindow.open(map, marker);
-});
-
-// 마커에 마우스아웃 이벤트를 등록합니다
-kakao.maps.event.addListener(marker, 'mouseout', function() {
-    // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-    infowindow.close();
-});
-</script>
-</body>
-</html>
-
+        document.addEventListener('DOMContentLoaded', function() {
+            const routeBtns = document.querySelectorAll('.route-btn');
+            routeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    </script>
 
 <!-------------- page 5 갤러리 --------------------->
 
 <section class="page page5">
-    <div class="page-inner">
-      <h2 class="section-title">갤러리</h2>
-      <div class="gallery-grid">
-        <img src="images/gallery1.jpg" alt="사진 1" />
-        <img src="images/gallery2.jpg" alt="사진 2" />
-        <img src="images/gallery3.jpg" alt="사진 3" />
-        <img src="images/gallery4.jpg" alt="사진 4" />
-      </div>
+  <div class="page-inner">
+    <h2 class="section-title">갤러리</h2>
+    <div class="insta-gallery">
+      <img src="images/gallery1.jpg" alt="사진 1">
+      <img src="images/gallery2.jpg" alt="사진 2">
+      <img src="images/gallery3.jpg" alt="사진 3">
+      <img src="images/gallery4.jpg" alt="사진 4">
+      <img src="images/gallery5.jpg" alt="사진 5">
+      <img src="images/gallery6.jpg" alt="사진 6">
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- 라이트 박스 -->
+
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="확대 이미지">
+</div>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.querySelector(".close");
+
+/* // 갤러리 이미지 클릭 이벤트 */
+document.querySelectorAll(".insta-gallery img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
+});
+
+// 닫기 버튼
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+// 라이트박스 배경 클릭 시 닫기
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
+</script>
+
+<!-------------- page 6 마음 전할 곳 --------------------->
+
+
+  <!-- 신랑측 아버지 -->
+  <div class="account-box">
+    <div class="page6-name" onclick="toggleAccount(this)">신랑 아버지</div>
+    <div class="account-info">
+      농협 123-4567-8901-23  
+      <button class="copy-btn" onclick="copyAccount(event, '농협 123-4567-8901-23')">복사</button>
+    </div>
+  </div>
+
+  <!-- 신랑측 어머니 -->
+  <div class="account-box">
+    <div class="page6-name" onclick="toggleAccount(this)">신랑 어머니</div>
+    <div class="account-info">
+      국민 234-5678-9012-34  
+      <button class="copy-btn" onclick="copyAccount(event, '국민 234-5678-9012-34')">복사</button>
+    </div>
+  </div>
+
+  <!-- 신랑 본인 -->
+  <div class="account-box">
+    <div class="page6-name" onclick="toggleAccount(this)">신랑</div>
+    <div class="account-info">
+      신한 345-6789-0123-45  
+      <button class="copy-btn" onclick="copyAccount(event, '신한 345-6789-0123-45')">복사</button>
+    </div>
+  </div>
+
+  <!-- 신부측 어머니 -->
+  <div class="account-box">
+    <div class="page6-name" onclick="toggleAccount(this)">신부 어머니</div>
+    <div class="account-info">
+      우리 456-7890-1234-56  
+      <button class="copy-btn" onclick="copyAccount(event, '우리 456-7890-1234-56')">복사</button>
+    </div>
+  </div>
+
+  <!-- 신부 본인 -->
+  <div class="account-box">
+    <div class="page6-name" onclick="toggleAccount(this)">신부</div>
+    <div class="account-info">
+      하나 567-8901-2345-67  
+      <button class="copy-btn" onclick="copyAccount(event, '하나 567-8901-2345-67')">복사</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
