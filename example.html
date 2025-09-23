@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카카오 지도 테스트</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f0f0;
+    }
+    #map {
+      width: 600px;
+      height: 400px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <!-- SDK 로드 -->
+  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=1b87979187b428de05949b9a77ffb0fe&autoload=false"></script>
+
+  <!-- 지도 초기화 -->
+  <script>
+    kakao.maps.load(function() {
+      var mapContainer = document.getElementById('map');
+      var mapOption = {
+        center: new kakao.maps.LatLng(35.550560, 129.136880), // 울산광역시 남구 삼산로
+        level: 3
+      };
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+    });
+  </script>
+
+</body>
+</html>
