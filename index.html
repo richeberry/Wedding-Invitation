@@ -6,12 +6,15 @@
   <title>진섭 & 송이 결혼합니다</title>
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- 폰트 로드 -->
-  <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 폰트 로드 -->
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script>
-    // 터치 이벤트 제어
-    document.addEventListener('touchstart', function(e) {
+
+// --------- PC/모바일 확대 금지 ---------
+
+document.addEventListener('touchstart', function(e) {
       if (e.touches.length > 1) e.preventDefault();
     }, { passive: false });
 
@@ -21,6 +24,33 @@
       if (now - lastTouchEnd <= 300) e.preventDefault();
       lastTouchEnd = now;
     }, { passive: false });
+
+document.addEventListener('keydown', function(e) {
+    // Ctrl + +, Ctrl + -, Ctrl + 0 방지
+    if ((e.ctrlKey || e.metaKey) && ['+', '-', '=','0'].includes(e.key)) {
+        e.preventDefault();
+    }
+});
+
+// 마우스 휠 Ctrl 줌 방지
+window.addEventListener('wheel', function(e) {
+    if (e.ctrlKey) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
+// 모바일 핀치 확대 방지
+document.addEventListener('touchmove', function(e) {
+    if (e.scale !== undefined && e.scale !== 1) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
+// 우클릭 방지
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
   </script>
 </head>
 
@@ -35,7 +65,9 @@
           <img src="images/couple-photo.jpg" alt="커플 사진" class="couple-photo" />
         </div>
       </div>
-      <h1 class="page0-name">진섭 & 송이</h1>
+        <h1 class="page0-name">
+        진섭 <span class="amp">&</span> 송이
+        </h1>
     </div>
   </section>
 
@@ -47,13 +79,16 @@
   </div>
 </section>
 
+  <script src="script-weddingnotice.js"></script>
+
+
+
 <!-------------- page 2 인사말 및 가족소개 --------------------->
   <section class="page page2">
     <div class="page-inner">
       <p class="greeting">
-        하나가 되는 뜻깊은 날을 맞이하게 되었습니다.<br><br>
-        그 새로운 시작의 순간<br>
-        귀한 걸음 하시어<br>
+        두 사람이 하나가 되는 뜻깊은 날을 맞이하게 되었습니다.<br>
+        그 새로운 시작의 순간, 귀한 걸음 하시어<br>
         축복해주시면 큰 기쁨으로 간직하겠습니다.
       </p>
       <div class="family-block">
@@ -79,14 +114,90 @@
 
 
 <!-------------- page 3 캘린더 --------------------->
-  <section class="page page3">
-    <div class="page-inner">
-      <p class="calendar-description"></p>
+<section class="page page3">
+  <div class="page-inner">
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <div class="month-year">11</div>
+      </div>
+      
+      <table class="calendar">
+        <thead>
+          <tr>
+            <th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
+          </tr>
+        </thead>
+            <tbody>
+                <tr>
+                    <td class="other-month">26</td>
+                    <td class="other-month">27</td>
+                    <td class="other-month">28</td>
+                    <td class="other-month">29</td>
+                    <td class="other-month">30</td>
+                    <td class="other-month">31</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td class="wedding-day">9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                </tr>
+                <tr>
+                    <td>30</td>
+                    <td class="other-month">1</td>
+                    <td class="other-month">2</td>
+                    <td class="other-month">3</td>
+                    <td class="other-month">4</td>
+                    <td class="other-month">5</td>
+                    <td class="other-month">6</td>
+                </tr>
+            </tbody>
+        </table>
+
+      
+      <div class="wedding-details">
+        <!-- <h3>진섭 & 송이</h3> -->
+        <p><span class="highlight-date">2025년 11월 9일</span></p>
+        <p>오후 1시</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
 <!-------------- page 4 오시는 길 --------------------->
+
 <section class="page page4">
         <div class="page4-wrapper">
             <h2 class="section-title">오시는 길</h2>
@@ -113,9 +224,7 @@
 
                     <a href="https://map.naver.com/p/search/%EB%8D%94%EC%97%A0%EC%BB%A8%EB%B2%A4%EC%85%98/place/1824752930" target="_blank" class="route-btn">
     <span>네이버 길찾기</span>
-</a>
-
-
+                    </a>
                 </div>
                 
                 <div class="bus-info">
@@ -212,7 +321,7 @@
 
 <section class="page page5">
   <div class="page-inner">
-    <h2 class="section-title">갤러리</h2>
+    <h2 class="section-title5">Gallery</h2>
     <div class="insta-gallery">
       <img src="images/gallery1.jpg" alt="사진 1">
       <img src="images/gallery2.jpg" alt="사진 2">
@@ -232,88 +341,106 @@
 </div>
 
 <script>
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const closeBtn = document.querySelector(".close");
+ // 갤러리 라이트박스 스크립트
+const galleryImages = document.querySelectorAll('.insta-gallery img');
+const lightbox = document.querySelector('.lightbox');
+const lightboxImg = document.querySelector('.lightbox-content');
+const closeBtn = document.querySelector('.lightbox .close');
 
-/* // 갤러리 이미지 클릭 이벤트 */
-document.querySelectorAll(".insta-gallery img").forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.style.display = "flex";
-    lightboxImg.src = img.src;
-  });
+galleryImages.forEach(img => {
+    img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+    });
 });
 
-// 닫기 버튼
-closeBtn.addEventListener("click", () => {
-  lightbox.style.display = "none";
+closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
 });
 
-// 라이트박스 배경 클릭 시 닫기
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) {
-    lightbox.style.display = "none";
-  }
+lightbox.addEventListener('click', e => {
+    if(e.target === lightbox) lightbox.style.display = 'none';
 });
+
 </script>
+
+
 
 <!-------------- page 6 마음 전할 곳 --------------------->
 
-<div class="page6-wrapper">
-  <h2 class="section-title">마음 전할 곳</h2>
-  <p class="page6-note">
-    결혼식에 직접 참석하기 어려우신 분들을 위해,<br> 
-    따뜻한 마음을 전하실 수 있는 계좌 안내입니다.
-  </p>
+<section class="page page6">
+  <div class="page-inner">
+    <div class="page6-wrapper">
+      <h2 class="section-title">마음 전할 곳</h2>
+      <p class="page6-note">
+        결혼식에 직접 참석하기 어려우신 분들을 위해<br> 
+        따뜻한 마음을 전하실 수 있는 계좌 안내입니다.
+      </p>
 
-  <!-- 신랑측 아버지 -->
-  <div class="account-box">
-    <div class="page6-name" onclick="toggleAccount(this)">신랑 아버지</div>
-    <div class="account-info">
-      농협 123-4567-8901-23  
-      <button class="copy-btn" onclick="copyAccount(event, '농협 123-4567-8901-23')">복사</button>
+      <!-- 신랑측 아버지 -->
+      <div class="account-box">
+        <div class="page6-name" onclick="toggleAccount(this)">신랑 아버지</div>
+        <div class="account-info">
+          <div class="account-details">
+            <span class="account-number">농협 123-4567-8901-23</span>
+            <button class="copy-btn" onclick="copyAccount(event, '농협 123-4567-8901-23')">복사</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 신랑측 어머니 -->
+      <div class="account-box">
+        <div class="page6-name" onclick="toggleAccount(this)">신랑 어머니</div>
+        <div class="account-info">
+          <div class="account-details">
+            <span class="account-number">국민 234-5678-9012-34</span>
+            <button class="copy-btn" onclick="copyAccount(event, '국민 234-5678-9012-34')">복사</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 신랑 본인 -->
+      <div class="account-box">
+        <div class="page6-name" onclick="toggleAccount(this)">신랑</div>
+        <div class="account-info">
+          <div class="account-details">
+            <span class="account-number">신한 345-6789-0123-45</span>
+            <button class="copy-btn" onclick="copyAccount(event, '신한 345-6789-0123-45')">복사</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 신부측 어머니 -->
+      <div class="account-box">
+        <div class="page6-name" onclick="toggleAccount(this)">신부 어머니</div>
+        <div class="account-info">
+          <div class="account-details">
+            <span class="account-number">우리 456-7890-1234-56</span>
+            <button class="copy-btn" onclick="copyAccount(event, '우리 456-7890-1234-56')">복사</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 신부 본인 -->
+      <div class="account-box">
+        <div class="page6-name" onclick="toggleAccount(this)">신부</div>
+        <div class="account-info">
+          <div class="account-details">
+            <span class="account-number">하나 567-8901-2345-67</span>
+            <button class="copy-btn" onclick="copyAccount(event, '하나 567-8901-2345-67')">복사</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copy-notification" id="copyNotification">
+      계좌번호가 복사되었습니다
     </div>
   </div>
-
-  <!-- 신랑측 어머니 -->
-  <div class="account-box">
-    <div class="page6-name" onclick="toggleAccount(this)">신랑 어머니</div>
-    <div class="account-info">
-      국민 234-5678-9012-34  
-      <button class="copy-btn" onclick="copyAccount(event, '국민 234-5678-9012-34')">복사</button>
-    </div>
-  </div>
-
-  <!-- 신랑 본인 -->
-  <div class="account-box">
-    <div class="page6-name" onclick="toggleAccount(this)">신랑</div>
-    <div class="account-info">
-      신한 345-6789-0123-45  
-      <button class="copy-btn" onclick="copyAccount(event, '신한 345-6789-0123-45')">복사</button>
-    </div>
-  </div>
-
-  <!-- 신부측 어머니 -->
-  <div class="account-box">
-    <div class="page6-name" onclick="toggleAccount(this)">신부 어머니</div>
-    <div class="account-info">
-      우리 456-7890-1234-56  
-      <button class="copy-btn" onclick="copyAccount(event, '우리 456-7890-1234-56')">복사</button>
-    </div>
-  </div>
-
-  <!-- 신부 본인 -->
-  <div class="account-box">
-    <div class="page6-name" onclick="toggleAccount(this)">신부</div>
-    <div class="account-info">
-      하나 567-8901-2345-67  
-      <button class="copy-btn" onclick="copyAccount(event, '하나 567-8901-2345-67')">복사</button>
-    </div>
-  </div>
-</div>
+</section>
 
 
-  <script src="script.js"></script>
+  <script src="script-account.js"></script>
 
 </body>
 </html>
