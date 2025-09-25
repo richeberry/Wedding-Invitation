@@ -32,6 +32,17 @@
   document.addEventListener('gesturestart', function(e) {
     e.preventDefault();
   }, { passive: false });
+
+
+ // 페이지 크기에 맞추기
+  function setFullHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  window.addEventListener('resize', setFullHeight);
+  window.addEventListener('load', setFullHeight);
+
 </script>
 
 </head>
