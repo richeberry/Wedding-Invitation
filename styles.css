@@ -86,11 +86,11 @@ body, img, div, section {
 
 .page-inner img {
     width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+    height: 100%;
+    /* object-fit: cover !important;
     pointer-events: none !important;
     user-select: none !important;
-    -webkit-user-drag: none !important;
+    -webkit-user-drag: none !important; */
 }
 
 .section-title {
@@ -111,21 +111,24 @@ body, img, div, section {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0px 20px;
+    padding: 40px 20px;
     box-sizing: border-box;
+    flex-direction: column;
+    text-align: center;
     overflow: hidden; /* 넘치는 내용 잘라내기 */
     position: relative;
 }
 
 .border-outer {
-    width: 65vw;
-    max-width: 600px;
+    width: 90%;
+    max-width: 500px;
     aspect-ratio: 825 / 1100;
     border: 0.95px solid rgb(0, 0, 0);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: 40px auto;
+    box-sizing: border-box;
 }
 
 .border-inner {
@@ -135,6 +138,8 @@ body, img, div, section {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 @keyframes fadeImageIn {
@@ -149,11 +154,13 @@ body, img, div, section {
 }
 
 .page0-name {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #333;
-    margin: 20px 0;
-    line-height: 1.2;
+    margin: 15px;
+    line-height: 1.4;
     font-weight: 300;
+    word-break: keep-all;
+    white-space: normal;
 }
 
 .page0-name .amp {
@@ -802,10 +809,11 @@ body, img, div, section {
     font-weight: 500;
     color: #250601;
     cursor: pointer;
-    display: blox;
-    /* justify-content: space-between; */
+    display: flex;
+    justify-content: center;
     text-align: center;
     align-items: center;
+    position: relative; /* 절대 위치 기준 */
     transition: background-color 0.2s ease;
 }
 
@@ -819,6 +827,8 @@ body, img, div, section {
     color: #c4c2b9;
     transition: transform 0.2s ease;
     font-weight: 300;
+    position: absolute; /* 절대 위치 지정*/
+    right: 20px; /*오른쪽 끝에서 20px 떨어짐*/
 }
 
 .page6-name.active::after {
