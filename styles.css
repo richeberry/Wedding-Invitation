@@ -93,6 +93,19 @@ body, img, div, section {
     font-weight: 500;
 }
 
+/* 페이지 간 여백 제거 */
+
+.page {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.page + .page {
+    margin-top: 0 !important;
+}
+
+
 /* ------------- Page 0: 메인 페이지 ------------- */
 .page0 {
     background-image: url('images/page0-background.png');
@@ -615,8 +628,8 @@ body, img, div, section {
     }
 
     .route-btn {
-        padding: 10px 20px;
-        font-size: 0.85rem;
+        padding: 10px 15px;
+        font-size: 0.75rem;
     }
 
     .bus-info {
