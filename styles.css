@@ -30,7 +30,6 @@ html, body {
     line-height: 1.6;
     color: #250601;
     background: #f2f0ed;
-    /* min-height: auto; 자동 페이지 길이 정렬 */
 }
 
 /* 상단 Wedding Invitation 글자 */
@@ -48,6 +47,7 @@ body::before {
     pointer-events: none;
     user-select: none;
 }
+
 /* 이미지 확대/드래그/길게누르기 방지 */
 img {
     -webkit-user-drag: none;
@@ -87,8 +87,7 @@ body, img, div, section {
     box-sizing: border-box;
     position: relative;
     margin: 0;
-      height: calc(var(--vh, 1vh) * 100); /* 갤럭시 페이지 움직이지 않게 */
-
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 .page-inner {
@@ -102,10 +101,6 @@ body, img, div, section {
 .page-inner img {
     width: 100% !important;
     height: 100%;
-    /* object-fit: cover !important;
-    pointer-events: none !important;
-    user-select: none !important;
-    -webkit-user-drag: none !important; */
 }
 
 .section-title {
@@ -119,14 +114,13 @@ body, img, div, section {
   --vh: 100%;
 }
 
-
 /* ------------- Page 0: 메인 페이지 ------------- */
 .page0 {
-    background-image: url('images/page0-background.png');
-    background-size: cover; /* 배경 꽉 차게 */
-    background-position: center; /* 가운데 정렬 */
+    background-image: url('images/page0-background-1.png');
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    max-height: 100vh; /* 화면 크기 만큼만 */
+    max-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -134,7 +128,7 @@ body, img, div, section {
     box-sizing: border-box;
     flex-direction: column;
     text-align: center;
-    overflow: hidden; /* 넘치는 내용 잘라내기 */
+    overflow: hidden;
     position: relative;
 }
 
@@ -146,7 +140,7 @@ body, img, div, section {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 40px auto;
+    margin: 60px auto 30px;
     box-sizing: border-box;
 }
 
@@ -173,9 +167,8 @@ body, img, div, section {
 }
 
 .page0-name {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #333;
-    margin: 15px;
     line-height: 1.4;
     font-weight: 300;
     word-break: keep-all;
@@ -189,7 +182,6 @@ body, img, div, section {
 }
 
 /* ------------- Page 1: 결혼 날 ------------- */
-
 .page1 {
     background-image: url('images/page1-background.jpg');
     background-position: center center;
@@ -203,7 +195,6 @@ body, img, div, section {
     justify-content: center;
 }
 
-/* 페이지 전체 fade-in */
 .page1-inner {
     max-width: 400px;
     margin: 0 auto;
@@ -226,12 +217,12 @@ body, img, div, section {
     transform: translateY(20px) scale(0.95);
     transition: opacity 1.5s ease, transform 1.5s ease;
     font-size: 2rem;
-    font-weight: 300; /* 얇게 */
+    font-weight: 300;
     color: #250601;
     text-align: center;
-    letter-spacing: 10px; /* 글자 간격 살짝 */
+    letter-spacing: 10px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
-    margin-bottom: 250px; /* 글자들 세로 간격 */
+    margin-bottom: 250px;
 }
 
 .wedding-notice.show {
@@ -248,8 +239,7 @@ body, img, div, section {
     letter-spacing: 3px;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s; /* 딜레이 추가 */
-    
+    transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s;
 }
 
 .page1-inner.show .wedding-date {
@@ -257,13 +247,10 @@ body, img, div, section {
     transform: translateY(0);
 }
 
-
-
 /* ------------- Page 2: 인사말 및 가족 소개 ------------- */
 .page2 {
     background: #e9e7e1;
     min-height: 100vh;
-    padding: 40px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -271,16 +258,15 @@ body, img, div, section {
 
 .greeting {
     font-size: 0.95rem;
-    font-weight: 300; /* 얇게 */
+    font-weight: 300;
     line-height: 1.8;
     color: #250601;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
 }
 
 .family-block {
     background: #e9e7e1;
     padding: 20px;
-    /* border-radius: 10px; */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
@@ -290,8 +276,7 @@ body, img, div, section {
     align-items: center;
     justify-content: center;
     font-size: 0.9rem;
-    transform: translateX(-17px); /* 왼쪽으로 17px 이동 */
-
+    transform: translateX(-17px);
 }
 
 .prefix {
@@ -398,7 +383,6 @@ body, img, div, section {
     text-align: center;
     margin-top: 40px;
     letter-spacing: 2px;
-
 }
 
 .wedding-details h3 {
@@ -421,7 +405,6 @@ body, img, div, section {
     color: #c4c2b9;
     font-weight: 350;
     letter-spacing: 2px;
-
 }
 
 .calendar-description {
@@ -430,20 +413,7 @@ body, img, div, section {
     text-align: center;
     line-height: 1.6;
 }
-    /* 모바일에서 달력 조정 */
-    /* .page3 .page-inner {
-        max-width: 300px;
-    }
 
-    .month-year {
-        font-size: 1.3rem;
-    }
-
-    .calendar th,
-    .calendar td {
-        height: 38px;
-        font-size: 0.8rem;
-    } */
 @media (max-width: 480px) {
     .page3 .page-inner {
         max-width: 300px;
@@ -459,16 +429,19 @@ body, img, div, section {
         font-size: 0.8rem;
     }
 }
+
 /* ------------- Page 4: 오시는 길 ------------- */
 .page4 {
-    min-height: 100vh;
+    min-height: auto; /* 자동 높이로 변경 */
+    height: auto; /* 고정 높이 제거 */
     display: flex;
-    flex-direction: column; /* 세로 배치 */
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
+    justify-content: flex-start;
+    padding: 80px 20px 80px 20px; /* 상하 패딩 늘림 */
+    background: #f2f0ed;
+    overflow: visible; /* 오버플로우 허용 */
 }
-
 
 .page4-wrapper {
     max-width: 800px;
@@ -477,11 +450,11 @@ body, img, div, section {
 }
 
 .page4 .section-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 300;
     text-align: center;
     color: #250601;
-    margin: 0px 0 10px 0;
+    margin: 20px 0 30px 0; /* 마진 조정 */
     letter-spacing: 2px;
     position: relative;
 }
@@ -517,7 +490,7 @@ body, img, div, section {
 }
 
 .map-container {
-    margin: 0 auto;
+    margin: 0 auto 30px auto; /* 하단 마진 추가 */
     border: 1px solid #250601;
     position: relative;
 }
@@ -555,14 +528,14 @@ body, img, div, section {
 }
 
 .route-section {
-    padding: 20px;
+    padding: 20px 0; /* 패딩 조정 */
 }
 
 .route-btn-group {
     display: flex;
     gap: 15px;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* 마진 늘림 */
     flex-wrap: wrap;
 }
 
@@ -609,39 +582,38 @@ body, img, div, section {
 .bus-info {
     display: flex;
     flex-direction: column;
-    align-items: center;   /* 가로 중앙 */
-    text-align: center;    /* 텍스트 중앙 */
+    align-items: center;
+    text-align: center;
     position: relative;
-    padding: 20px;   /* 좌우 패딩을 통일 */
+    padding: 30px 20px 20px 20px; /* 패딩 조정 */
     max-width: 100%;
     margin: 0 auto;
 }
 
-.bus-info h3{
+.bus-info h3 {
     font-size: 1rem;
     font-weight: 400;
     text-align: center;
-    margin: 0 0 10px 0;
-
+    margin: 0 0 15px 0; /* 마진 늘림 */
 }
+
 .bus-info p {
-    margin: 5px 0;
+    margin: 8px 0; /* 마진 늘림 */
     text-align: center;
     font-weight: 300;
     font-size: 0.9rem;
-    white-space: nowrap;
+    word-break: keep-all; /* 단어 줄바꿈 개선 */
+    line-height: 1.4; /* 줄간격 추가 */
 }
-
 
 @media (max-width: 768px) {
     .page4 {
-        padding: 40px 16px;
+        padding: 60px 16px 60px 16px; /* 모바일에서도 충분한 패딩 */
     }
-
 
     .page4 .section-title {
         font-size: 1.7rem;
-        margin: 0px 0 20px 0;
+        margin: 20px 0 20px 0;
         letter-spacing: 1px;
     }
 
@@ -657,8 +629,8 @@ body, img, div, section {
     }
 
     .route-btn-group {
-        align-items: center;
         gap: 12px;
+        margin-bottom: 25px;
     }
 
     .route-btn {
@@ -667,17 +639,18 @@ body, img, div, section {
     }
 
     .bus-info {
-        padding: 20px 20px;
+        padding: 25px 15px 15px 15px;
     }
 
-
-
+    .bus-info p {
+        white-space: normal; /* 모바일에서는 줄바꿈 허용 */
+    }
+}
 
 /* ------------- Page 5: 갤러리 ------------- */
-
 .page5 {
     min-height: 100vh;
-    padding: 40px 20px; /* 시계 방향 */
+    padding: 40px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -689,44 +662,36 @@ body, img, div, section {
     font-size: 1.9rem;
     margin: 0 0 40px 0;
     text-align: center;
-    font-family: '';
 }
 
 .insta-gallery {
     display: grid;
-    grid-template-columns: repeat(2, 150px); /* 한 줄에 2장 */
-    grid-template-rows: repeat(3, 150px); /* 3줄 */
+    grid-template-columns: repeat(2, 150px);
+    grid-template-rows: repeat(3, 150px);
     gap: 5px;
-    touch-action: pan-y; /* 세로 스크롤은 허용, 가로 스와이프는 가능 */
-    /* max-height: calc(2 * (100px + 5px)); 사진 높이 + gap 조정 */
-    /* overflow: hidden; 더 많은 사진 숨기기 */
-    justify-content: center; /* 그리드 전체 가로 중앙 정렬 */
+    touch-action: pan-y;
+    justify-content: center;
     width: 100%;
     max-width: 320px;
     margin: 0 auto;
-
 }
 
 .insta-gallery img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border: 1px solid #250601; /* 테두리 색상과 두께 */
-    /* border-radius: 6px; */
+    border: 1px solid #250601;
     cursor: pointer;
     transition: transform 0.3s ease, opacity 0.3s ease;
     pointer-events: auto !important;
     user-select: auto !important;
     -webkit-user-drag: auto !important;
     touch-action: manipulation;
-
 }
-
-
 
 /* 라이트박스 전체 */
 .lightbox {
-    display: none;           /* 기본 숨김 */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -740,23 +705,26 @@ body, img, div, section {
 
 /* 라이트박스 안 이미지 */
 .lightbox-content {
-    max-width: 70%;
-    max-height: 70%;
+    max-width: 85%;
+    max-height: 85%;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     border: 1px solid #250601;
-
-    /* 라이트박스 안 이미지 확대/드래그 막기 */
-    pointer-events: none;       /* 클릭/드래그 막기 */
+    pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
-    touch-action: none;         /* 모바일 핀치 확대 막기 */
+    touch-action: none;
+    transition: transform 0.8s ease, opacity 0.4s ease;
 }
 
+.lightbox.show {
+    opacity: 1;
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.75);
+}
 
 /* 닫기 버튼 */
-
 .lightbox .close {
     position: absolute;
     top: 20px;
@@ -768,9 +736,15 @@ body, img, div, section {
     z-index: 1010;
 }
 
+@media (max-width: 480px) {
+    .insta-gallery {
+        grid-template-columns: repeat(2, 120px);
+        grid-template-rows: repeat(3, 120px);
+        max-width: 260px;
+    }
+}
 
 /* ------------- Page 6: 마음 전할 곳 ------------- */
-
 .page6 {
     height: calc(var(--vh, 1vh) * 100);
     display: flex;
@@ -823,16 +797,14 @@ body, img, div, section {
 }
 
 .page6-name {
-    padding: 20px;
+    padding: 20px 50px 20px 20px; /* 오른쪽 패딩을 50px로 */
     font-size: 0.95rem;
     font-weight: 500;
     color: #250601;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
+    display: block; /* flex에서 block으로 변경 */
     text-align: center;
-    align-items: center;
-    position: relative; /* 절대 위치 기준 */
+    position: relative;
     transition: background-color 0.2s ease;
 }
 
@@ -846,12 +818,14 @@ body, img, div, section {
     color: #c4c2b9;
     transition: transform 0.2s ease;
     font-weight: 300;
-    position: absolute; /* 절대 위치 지정*/
-    right: 20px; /*오른쪽 끝에서 20px 떨어짐*/
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .page6-name.active::after {
-    transform: rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
 }
 
 .account-info {
@@ -872,7 +846,7 @@ body, img, div, section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 20px; /* 간격을 20px로 늘림 */
 }
 
 .account-number {
@@ -886,21 +860,20 @@ body, img, div, section {
 .copy-btn {
     background-color: #250601;
     border: none;
-    border-radius: 4px;
-    padding: 8px 16px;
-    font-size: 11px;
+    border-radius: 6px; /* 둥글기 증가 */
+    padding: 8px 16px; /* 패딩 증가 */
+    font-size: 12px; /* 폰트 크기 증가 */
     color: white;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-weight: 400;
+    font-weight: 500; /* 폰트 굵기 증가 */
     white-space: nowrap;
     min-width: 60px;
     box-shadow: 0 2px 4px rgba(37, 6, 1, 0.2);
-
 }
 
 .copy-btn:hover {
-    background-color: #250601;
+    background-color: #1a0400;
 }
 
 .copy-btn:active {
@@ -946,5 +919,4 @@ body, img, div, section {
         align-self: center;
         padding: 8px 16px;
     }
-}
 }

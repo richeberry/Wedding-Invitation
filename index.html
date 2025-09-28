@@ -53,6 +53,10 @@
   window.addEventListener('resize', setVhUnit);
   window.addEventListener('load', setVhUnit);
 
+// <head> 안이나 DOMContentLoaded 이후 실행 - 페이지 화면 계산 후 넣기
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 </script>
 
 </head>
@@ -235,9 +239,8 @@
                 <div class="bus-info">
                     <h3>대절 버스</h3>
                     <p>
-                        모임 장소: 제천시 보건소 (충북 제천시 의림대로 242)<br>
+                        제천시 보건소(의림대로 242)에서 출발합니다.<br>
                         출발: 오전 8시 30분 / 도착: 오후 6시<br>
-                        자세한 사항은 별도 안내드립니다.
                     </p>
                 </div>
             </div>
@@ -443,10 +446,15 @@ lightbox.addEventListener('click', e => {
       계좌번호가 복사되었습니다
     </div>
   </div>
+
 </section>
 
 
   <script src="script-account.js"></script>
+
+    <audio autoplay loop>
+  <source src="music/your-song.mp3" type="audio/mpeg" />
+</audio>
 
 </body>
 </html>
