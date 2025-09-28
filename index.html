@@ -63,6 +63,23 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 
 <body>
+
+<!-- 노래 -->
+ <audio id="bgm" loop>
+  <source src="music/weddingmusic.mp3" type="audio/mpeg" />
+</audio>
+
+<script>
+  // 한 번 터치하면 음악 재생
+  window.addEventListener('click', () => {
+    const bgm = document.getElementById('bgm');
+    if (bgm.paused) {
+      bgm.play().catch(err => console.log('음악 재생 실패:', err));
+    }
+  }, { once: true });
+</script>
+
+
 <!-------------- page 0 메인 --------------------->
 
   <section class="page page0">
@@ -195,9 +212,9 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 
       
       <div class="wedding-details">
-        <!-- <h3>진섭 & 송이</h3> -->
+        <h3>진섭 & 송이</h3>
         <p><span class="highlight-date">2025년 11월 9일</span></p>
-        <p>오후 1시</p>
+        <p>일요일 오후 1시</p>
       </div>
     </div>
   </div>
@@ -239,7 +256,7 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
                 <div class="bus-info">
                     <h3>대절 버스</h3>
                     <p>
-                        제천시 보건소(의림대로 242)에서 출발합니다.<br>
+                        제천시 보건소에서 출발합니다. (의림대로 242)<br>
                         출발: 오전 8시 30분 / 도착: 오후 6시<br>
                     </p>
                 </div>
@@ -452,9 +469,6 @@ lightbox.addEventListener('click', e => {
 
   <script src="script-account.js"></script>
 
-    <audio autoplay loop>
-  <source src="music/weddingmusic.mp3" type="audio/mpeg" />
-</audio>
 
 </body>
 </html>
