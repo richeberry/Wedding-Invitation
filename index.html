@@ -70,15 +70,15 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 </audio>
 
 <script>
-  // 한 번 터치하면 음악 재생
-  window.addEventListener('click', () => {
+
+  // 스크롤하면 음악 재생
+  window.addEventListener('scroll', () => {
     const bgm = document.getElementById('bgm');
     if (bgm.paused) {
       bgm.play().catch(err => console.log('음악 재생 실패:', err));
     }
   }, { once: true });
 </script>
-
 
 <!-------------- page 0 메인 --------------------->
 
