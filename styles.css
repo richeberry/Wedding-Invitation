@@ -33,6 +33,21 @@ html, body {
     /* min-height: auto; 자동 페이지 길이 정렬 */
 }
 
+/* 상단 Wedding Invitation 글자 */
+body::before {
+    content: "Wedding Invitation 11 / 09";
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: rgba(37, 6, 1, 0.3);
+    letter-spacing: 2px;
+    z-index: 1000;
+    pointer-events: none;
+    user-select: none;
+}
 /* 이미지 확대/드래그/길게누르기 방지 */
 img {
     -webkit-user-drag: none;
@@ -72,7 +87,7 @@ body, img, div, section {
     box-sizing: border-box;
     position: relative;
     margin: 0;
-    /* height: calc(var(--vh, 1vh) * 100); */
+      height: calc(var(--vh, 1vh) * 100); /* 갤럭시 페이지 움직이지 않게 */
 
 }
 
@@ -98,6 +113,10 @@ body, img, div, section {
     color: #333;
     margin-bottom: 20px;
     font-weight: 500;
+}
+
+:root {
+  --vh: 100%;
 }
 
 
@@ -753,7 +772,7 @@ body, img, div, section {
 /* ------------- Page 6: 마음 전할 곳 ------------- */
 
 .page6 {
-    min-height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     display: flex;
     align-items: center;
     justify-content: center;
