@@ -99,6 +99,7 @@ body, img, div, section {
     align-items: center;
     justify-content: center;
     text-align: center;
+    white-space: nowrap; /* 줄바꿈 금지 */
 }
 
 .page-inner img {
@@ -281,6 +282,8 @@ body, img, div, section {
     line-height: 1.8;
     color: #250601;
     margin-bottom: 80px;
+    white-space: nowrap;
+
 }
 
 .family-block {
@@ -923,11 +926,14 @@ body, img, div, section {
     .page6 {
         padding: 30px 15px;
     }
-    
+
 /* 모바일 대응 */
 @media (max-width: 480px){
   .page-inner { max-width: 300px; }
-  .insta-gallery { max-width: 260px; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+  .insta-gallery { max-width: 260px; 
+        grid-template-columns: repeat(2, 1fr); 
+        grid-auto-rows: 1fr;
+        gap: 5px; }
   #map { height: 300px; }
     
     .page6-wrapper {
@@ -945,4 +951,5 @@ body, img, div, section {
         align-self: center;
         padding: 8px 16px;
     }
+}
 }
