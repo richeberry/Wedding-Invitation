@@ -47,34 +47,23 @@
 
 
  // 페이지 크기에 맞추기
-  function setFullHeight() {
+/* 최초 로드 시 한 번만 계산해서 고정 -- 모바일 웹뷰 공유바/주소창 변화 무시 */
+(function() {
+  function setFixedVhOnce(){
+    // 초기 보이는 화면 높이 기준으로 계산
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+    // (중요) 이후 resize 이벤트로 재계산하지 않음 — 스크롤 때 높이 변하지 않게 고정하려면 이게 핵심
   }
-
-  window.addEventListener('resize', setFullHeight);
-  window.addEventListener('load', setFullHeight);
-
-
-// 갤럭시 화면 튐 방지
-  function setVhUnit() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  if (document.readyState === 'loading') {
+    window.addEventListener('load', setFixedVhOnce, {once: true});
+  } else {
+    setFixedVhOnce();
   }
+})();
 
-  window.addEventListener('resize', setVhUnit);
-  window.addEventListener('load', setVhUnit);
 
- // 최초 화면 높이를 계산해서 CSS 변수로 저장
-  function setFixedVh() {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
 
-  // 최초 로드 시 한 번만 실행
-  window.addEventListener('load', setFixedVh);
-
-  // resize 이벤트 무시 → 스크롤/하단 바 변경에도 높이 변하지 않음
 </script>
 
 </head>

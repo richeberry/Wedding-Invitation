@@ -2,6 +2,8 @@
 /* === 공통 설정 === */
 /*프리텐다드 폰트*/
 
+:root { --vh: 1vh; }
+
 /* 기본 확대 방지 + 터치 하이라이트 제거 */
 * {
     -webkit-user-select: none;
@@ -113,6 +115,7 @@ body, img, div, section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 
 .page-inner img {
