@@ -1,250 +1,152 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-    <!-- 필수 메타태그: 확대 줌 막기 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>진섭 & 송이 결혼합니다</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
-    <!-- OGP 메타 태그 -->
+  <!-- OGP -->
   <meta property="og:title" content="진섭 & 송이 결혼합니다">
   <meta property="og:description" content="두 사람이 하나의 가정을 이루는 뜻깊은 날, 축복해 주세요.">
   <meta property="og:image" content="https://jinseopsongyiwedding.com/images/couple-photo.jpg">
   <meta property="og:url" content="https://jinseopsongyiwedding.com">
   <meta property="og:type" content="website">
 
+  <!-- 폰트 -->
+  <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
-  <title>진섭 & 송이 결혼합니다</title>
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="favicon.png"><!-- 사파리용 -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 
-    <!-- 폰트 로드 -->
-    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    :root { --vh: 1vh; }
 
-<script>
-  // 핀치 줌, 다중 터치 차단
-  document.addEventListener('touchstart', function(e) {
-    if (e.touches.length > 1) {
-      e.preventDefault();
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Noto Sans KR', 'Inter', sans-serif;
     }
-  }, { passive: false });
 
-  // 더블탭 확대 방지 (iOS)
-  let lastTouch = 0;
-  document.addEventListener('touchend', function(e) {
-    const now = new Date().getTime();
-    if (now - lastTouch <= 300) {
-      e.preventDefault();
+    .page {
+      height: calc(var(--vh) * 100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
     }
-    lastTouch = now;
-  }, { passive: false });
 
-  // iOS 제스처 확대 방지
-  document.addEventListener('gesturestart', function(e) {
-    e.preventDefault();
-  }, { passive: false });
+    .page-inner { width: 100%; max-width: 800px; margin: 0 auto; }
 
+    /* 라이트박스 */
+    .lightbox { display: none; position: fixed; top: 0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; z-index: 9999; }
+    .lightbox-content { max-width: 90%; max-height: 90%; }
+    .lightbox .close { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: #fff; cursor: pointer; }
+  </style>
 
- // 페이지 크기에 맞추기
-  function setFullHeight() {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
+  <script>
+    // 모바일 pinch/gesture 줌 방지
+    document.addEventListener('touchstart', e => { if(e.touches.length > 1) e.preventDefault(); }, {passive:false});
+    let lastTouch = 0;
+    document.addEventListener('touchend', e => {
+      const now = Date.now();
+      if(now - lastTouch <= 300) e.preventDefault();
+      lastTouch = now;
+    }, {passive:false});
+    document.addEventListener('gesturestart', e => e.preventDefault(), {passive:false});
 
-  window.addEventListener('resize', setFullHeight);
-  window.addEventListener('load', setFullHeight);
+    // vh 계산 (모바일 웹뷰 하단 바 포함)
+    function setVh() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+    window.addEventListener('orientationchange', setVh);
 
-
-// 갤럭시 화면 튐 방지
-  function setVhUnit() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
-
-  window.addEventListener('resize', setVhUnit);
-  window.addEventListener('load', setVhUnit);
-
-// <head> 안이나 DOMContentLoaded 이후 실행 - 페이지 화면 계산 후 넣기
-let vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-//페이지 높이 고정
-function setVh() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-setVh();
-window.addEventListener('resize', setVh);
-
-</script>
+    // 음악 최초 터치/스크롤 재생
+    function playBgm() {
+      const bgm = document.getElementById('bgm');
+      if(bgm.paused) bgm.play().catch(()=>{});
+      document.removeEventListener('touchstart', playBgm);
+      document.removeEventListener('scroll', playBgm);
+    }
+    document.addEventListener('touchstart', playBgm, {passive:true});
+    document.addEventListener('scroll', playBgm, {passive:true});
+  </script>
 
 </head>
-
-
 <body>
 
-<!-- 노래 -->
- <audio id="bgm" loop>
-  <source src="music/weddingmusic.mp3" type="audio/mpeg" />
+<!-- 배경 음악 -->
+<audio id="bgm" loop>
+  <source src="music/weddingmusic.mp3" type="audio/mpeg">
 </audio>
 
-<script>
-
-// 최초 터치/스크롤 시 음악 재생
-function playBgm() {
-    const bgm = document.getElementById('bgm');
-    if (bgm.paused) {
-        bgm.play().catch(err => console.log('음악 재생 실패:', err));
-    }
-    // 이벤트 한 번만 실행
-    document.removeEventListener('touchstart', playBgm);
-    document.removeEventListener('scroll', playBgm);
-}
-
-// 모바일 터치와 스크롤에 동시에 대응
-document.addEventListener('touchstart', playBgm, { passive: true });
-document.addEventListener('scroll', playBgm, { passive: true });
-
-</script>
-
-<!-------------- page 0 메인 --------------------->
-
-  <section class="page page0">
-    <div class="page-inner">
-      <div class="border-outer">
-        <div class="border-inner">
-          <img src="images/couple-photo.jpg" alt="커플 사진" class="couple-photo" />
-        </div>
+<!-------------- page 0 --------------------->
+<section class="page page0">
+  <div class="page-inner">
+    <div class="border-outer">
+      <div class="border-inner">
+        <img src="images/couple-photo.jpg" alt="커플 사진" class="couple-photo" />
       </div>
-        <h1 class="page0-name">
-        김진섭 <span class="amp">&</span> 송송이
-        </h1>
     </div>
-  </section>
+    <h1 class="page0-name">김진섭 <span class="amp">&</span> 송송이</h1>
+  </div>
+</section>
 
-<!-------------- page 1 결혼 날짜 --------------------->
+<!-------------- page 1 --------------------->
 <section class="page page1">
   <div class="page-inner page1-inner">
     <h2 class="wedding-notice">결혼합니다</h2>
     <div class="wedding-date">11월 9일<br><br>일요일 오후 1시<br>더 엠 컨벤션 9층 펠리시타홀</div>
-
   </div>
 </section>
 
-  <script src="script-weddingnotice.js"></script>
+<script src="script-weddingnotice.js"></script>
 
-
-
-<!-------------- page 2 인사말 및 가족소개 --------------------->
-  <section class="page page2">
-    <div class="page-inner">
-      <p class="greeting">
-        두 사람이 하나의 가정을 이루는 뜻깊은 날<br>
-        그 새로운 시작의 순간에 귀한 걸음으로 함께해 주신다면<br>
-        더없는 기쁨과 감사로 간직하겠습니다.
-      </p>
-      <div class="family-block">
-
-        <div class="family-line">
-          <span class="prefix"></span>
-          <span class="main-line">
-            <span class="parents">김영도 ・ 권혁자</span>
-            <span class="relation">의 차남</span>
-            <span class="parents">진섭</span>
-          </span>
-        </div>
-
-        <div class="family-line">
-          <span class="prefix">(故)</span>
-          <span class="main-line">
-            <span class="parents">송준천 ・ 도경순</span>
-            <span class="relation">의 장녀</span>
-            <span class="parents">송이</span>
-          </span>
-        </div>
-
+<!-------------- page 2 --------------------->
+<section class="page page2">
+  <div class="page-inner">
+    <p class="greeting">
+      두 사람이 하나의 가정을 이루는 뜻깊은 날<br>
+      그 새로운 시작의 순간에 귀한 걸음으로 함께해 주신다면<br>
+      더없는 기쁨과 감사로 간직하겠습니다.
+    </p>
+    <div class="family-block">
+      <div class="family-line">
+        <span class="parents">김영도 ・ 권혁자</span> 의 차남 <span class="parents">진섭</span>
+      </div>
+      <div class="family-line">
+        <span class="parents">송준천 ・ 도경순</span> 의 장녀 <span class="parents">송이</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-
-<!-------------- page 3 캘린더 --------------------->
+<!-------------- page 3 --------------------->
 <section class="page page3">
   <div class="page-inner">
     <div class="calendar-container">
-      <div class="calendar-header">
-        <div class="month-year">11</div>
-      </div>
-      
+      <div class="calendar-header"><div class="month-year">11</div></div>
       <table class="calendar">
-        <thead>
-          <tr>
-            <th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
-          </tr>
-        </thead>
-            <tbody>
-                <tr>
-                    <td class="other-month">26</td>
-                    <td class="other-month">27</td>
-                    <td class="other-month">28</td>
-                    <td class="other-month">29</td>
-                    <td class="other-month">30</td>
-                    <td class="other-month">31</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td class="wedding-day">9</td>
-                    <td>10</td>
-                    <td>11</td>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>14</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td>17</td>
-                    <td>18</td>
-                    <td>19</td>
-                    <td>20</td>
-                    <td>21</td>
-                    <td>22</td>
-                </tr>
-                <tr>
-                    <td>23</td>
-                    <td>24</td>
-                    <td>25</td>
-                    <td>26</td>
-                    <td>27</td>
-                    <td>28</td>
-                    <td>29</td>
-                </tr>
-                <tr>
-                    <td>30</td>
-                    <td class="other-month">1</td>
-                    <td class="other-month">2</td>
-                    <td class="other-month">3</td>
-                    <td class="other-month">4</td>
-                    <td class="other-month">5</td>
-                    <td class="other-month">6</td>
-                </tr>
-            </tbody>
-        </table>
-
-      
+        <thead><tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr></thead>
+        <tbody>
+          <tr><td class="other-month">26</td><td class="other-month">27</td><td class="other-month">28</td><td class="other-month">29</td><td class="other-month">30</td><td class="other-month">31</td><td>1</td></tr>
+          <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+          <tr><td class="wedding-day">9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+          <tr><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td></tr>
+          <tr><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td></tr>
+          <tr><td>30</td><td class="other-month">1</td><td class="other-month">2</td><td class="other-month">3</td><td class="other-month">4</td><td class="other-month">5</td><td class="other-month">6</td></tr>
+        </tbody>
+      </table>
       <div class="wedding-details">
-        <!-- <h3>진섭 & 송이</h3> -->
         <p><span class="highlight-date">2025년 11월 9일</span></p>
         <p>일요일 오후 1시</p>
       </div>
@@ -252,130 +154,52 @@ document.addEventListener('scroll', playBgm, { passive: true });
   </div>
 </section>
 
-
-<!-------------- page 4 오시는 길 --------------------->
-
+<!-------------- page 4 --------------------->
 <section class="page page4">
-        <div class="page4-wrapper">
-            <h2 class="section-title">오시는 길</h2>
-            
-            <div class="wedding-info">
-                울산 울주군 삼남읍 도호길 31<br>
-                더 엠 컨벤션 9층 펠리시타홀
-            </div>
-            
-            <div class="map-container">
-                <div id="map-loading" class="map-loading">
-                    <div class="loading-spinner"></div>
-                    지도를 불러오는 중...
-                </div>
-                <div id="map" style="display: none;"></div>
-            </div>
-            
-            <div class="route-section">
-                <div class="route-btn-group">
-                    <a href="https://map.kakao.com/link/to/더엠컨벤션,35.5486, 129.1392" 
-                    target="_blank" class="route-btn">
-                        <span>카카오 길찾기</span>
-                    </a>
+  <div class="page4-wrapper">
+    <h2 class="section-title">오시는 길</h2>
+    <div class="wedding-info">울산 울주군 삼남읍 도호길 31<br>더 엠 컨벤션 9층 펠리시타홀</div>
+    <div class="map-container">
+      <div id="map-loading" class="map-loading">지도를 불러오는 중...</div>
+      <div id="map" style="display:none;"></div>
+    </div>
+    <div class="route-section">
+      <div class="route-btn-group">
+        <a href="https://map.kakao.com/link/to/더엠컨벤션,35.5486,129.1392" target="_blank" class="route-btn"><span>카카오 길찾기</span></a>
+        <a href="https://map.naver.com/p/search/%EB%8D%94%EC%97%A0%EC%BB%A8%EB%B2%A4%EC%85%98/place/1824752930" target="_blank" class="route-btn"><span>네이버 길찾기</span></a>
+      </div>
+      <div class="bus-info">
+        <h3>대절 버스</h3>
+        <p>제천시 보건소에서 출발합니다. (의림대로 242)<br>출발 08시 30분 / 도착 18시</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                    <a href="https://map.naver.com/p/search/%EB%8D%94%EC%97%A0%EC%BB%A8%EB%B2%A4%EC%85%98/place/1824752930" 
-                    target="_blank" class="route-btn">
-                        <span>네이버 길찾기</span>
-                    </a>
-                </div>
-                
-                <div class="bus-info">
-                    <h3>대절 버스</h3>
-                    <p>
-                        제천시 보건소에서 출발합니다. (의림대로 242)<br>
-                        출발 08시 30분 / 도착 18시<br>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1b87979187b428de05949b9a77ffb0fe"></script>
+<script>
+function initializeMap() {
+  const mapContainer = document.getElementById('map');
+  mapContainer.style.display = 'block';
+  const mapLoading = document.getElementById('map-loading');
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1b87979187b428de05949b9a77ffb0fe"></script>
-    <script>
-        // 지도 초기화 함수
-        function initializeMap() {
-            const mapContainer = document.getElementById('map');
-            mapContainer.style.display = 'block'; // 부모가 보이도록
-            const mapLoading = document.getElementById('map-loading');
-            
-            const mapOption = {
-                center: new kakao.maps.LatLng(35.5486, 129.1392), // 지도의 중심 좌표
-                level: 4
-            };
+  try {
+    const map = new kakao.maps.Map(mapContainer, {center:new kakao.maps.LatLng(35.5486,129.1392), level:4});
+    const marker = new kakao.maps.Marker({position:new kakao.maps.LatLng(35.5486,129.1392)});
+    marker.setMap(map);
 
-            try {
-                const map = new kakao.maps.Map(mapContainer, mapOption);
-                map.relayout(); // 부모 크기를 재인식
-                map.setCenter(new kakao.maps.LatLng(35.5486, 129.1392)); // 중심 좌표 재설정
+    mapLoading.style.display='none';
+    mapContainer.style.display='block';
+    setTimeout(()=>map.relayout(),100);
+  } catch(e){
+    console.error(e);
+    mapLoading.innerHTML=`지도를 불러올 수 없습니다<br>길찾기 버튼을 이용해주세요`;
+  }
+}
+if(typeof kakao!=='undefined' && kakao.maps) kakao.maps.load(initializeMap);
+</script>
 
-                // 마커 위치
-                const position = new kakao.maps.LatLng(35.5486, 129.1392);
-                
-                // 마커 생성
-                const marker = new kakao.maps.Marker({
-                    position: position
-                });
-                
-                marker.setMap(map);
-
-
-                // 로딩 완료 후 지도 표시
-                mapLoading.style.display = 'none';
-                mapContainer.style.display = 'block';
-                
-                // 지도 크기 재조정
-                setTimeout(() => {
-                    map.relayout();
-                }, 100);
-                
-            } catch (error) {
-                console.error('지도 로딩 중 오류 발생:', error);
-                mapLoading.innerHTML = `
-                    <div style="text-align: center; color: #000; font-weight: 300;">
-                        <div>지도를 불러올 수 없습니다</div>
-                        <div style="font-size: 0.9rem; margin-top: 8px;">
-                            길찾기 버튼을 이용해주세요
-                        </div>
-                    </div>
-                `;
-            }
-        }
-// 카카오맵 API 로드 완료 후 지도 초기화
-        if (typeof kakao !== 'undefined' && kakao.maps) {
-            kakao.maps.load(initializeMap);
-        } else {
-            document.getElementById('map-loading').innerHTML = `
-                <div style="text-align: center; color: #000; font-weight: 300;">
-                    <div>지도 서비스를 불러올 수 없습니다</div>
-                    <div style="font-size: 0.9rem; margin-top: 8px;">
-                        길찾기 버튼을 이용해주세요
-                    </div>
-                </div>
-            `;
-        }
-// 페이지 로드 완료 후 부드러운 스크롤 활성화
-        document.addEventListener('DOMContentLoaded', function() {
-            // 외부 링크 클릭 시 부드러운 피드백 
-            const routeBtns = document.querySelectorAll('.route-btn');
-            routeBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.98)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-        });
-    </script>
-
-<!-------------- page 5 갤러리 --------------------->
-
+<!-------------- page 5 --------------------->
 <section class="page page5">
   <div class="page-inner">
     <h2 class="section-title5">Gallery</h2>
@@ -390,118 +214,54 @@ document.addEventListener('scroll', playBgm, { passive: true });
   </div>
 </section>
 
-<!-- 라이트 박스 -->
-
 <div id="lightbox" class="lightbox">
   <span class="close">&times;</span>
   <img class="lightbox-content" id="lightbox-img" alt="확대 이미지">
 </div>
 
 <script>
- // 갤러리 라이트박스 스크립트
 const galleryImages = document.querySelectorAll('.insta-gallery img');
 const lightbox = document.querySelector('.lightbox');
 const lightboxImg = document.querySelector('.lightbox-content');
 const closeBtn = document.querySelector('.lightbox .close');
 
-galleryImages.forEach(img => {
-    img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-    });
-});
-
-closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-});
-
-lightbox.addEventListener('click', e => {
-    if(e.target === lightbox) lightbox.style.display = 'none';
-});
-
+galleryImages.forEach(img=>img.addEventListener('click',()=>{lightbox.style.display='flex'; lightboxImg.src=img.src;}));
+closeBtn.addEventListener('click',()=>lightbox.style.display='none');
+lightbox.addEventListener('click',e=>{if(e.target===lightbox) lightbox.style.display='none';});
 </script>
 
-
-
-<!-------------- page 6 마음 전할 곳 --------------------->
-
+<!-------------- page 6 --------------------->
 <section class="page page6">
   <div class="page-inner">
-    <div class="page6-wrapper">
-      <h2 class="section-title">마음 전하실 곳</h2>
-      <p class="page6-note">
-        직접 참석하기 어려우신 분들을 위해<br> 
-        축하의 마음을 전하실 수 있는 안내를 드립니다.
-      </p>
+    <h2 class="section-title">마음 전하실 곳</h2>
+    <p class="page6-note">직접 참석하기 어려우신 분들을 위해<br>축하의 마음을 전하실 수 있는 안내를 드립니다.</p>
 
-          <!-- 신랑 본인 -->
-      <div class="account-box">
-        <div class="page6-name" onclick="toggleAccount(this)">김진섭</div>
-        <div class="account-info">
-          <div class="account-details">
-            <span class="account-number">국민 613402-04-143936</span>
-            <button class="copy-btn" onclick="copyAccount(event, '국민 61340204143936')">복사</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 신랑측 아버지 -->
-      <div class="account-box">
-        <div class="page6-name" onclick="toggleAccount(this)">김영도</div>
-        <div class="account-info">
-          <div class="account-details">
-            <span class="account-number">하나 161-18-22890-5</span>
-            <button class="copy-btn" onclick="copyAccount(event, '하나 16118228905')">복사</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 신랑측 어머니 -->
-      <div class="account-box">
-        <div class="page6-name" onclick="toggleAccount(this)">권혁자</div>
-        <div class="account-info">
-          <div class="account-details">
-            <span class="account-number">농협 8150-8456-3659-33</span>
-            <button class="copy-btn" onclick="copyAccount(event, '농협 81508456365933')">복사</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 신부 본인 -->
-      <div class="account-box">
-        <div class="page6-name" onclick="toggleAccount(this)">송송이</div>
-        <div class="account-info">
-          <div class="account-details">
-            <span class="account-number">신한 110-318-520610</span>
-            <button class="copy-btn" onclick="copyAccount(event, '신한 110318520610')">복사</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 신부측 어머니 -->
-      <div class="account-box">
-        <div class="page6-name" onclick="toggleAccount(this)">도경순</div>
-        <div class="account-info">
-          <div class="account-details">
-            <span class="account-number">농협 335-12-100060</span>
-            <button class="copy-btn" onclick="copyAccount(event, '농협 33512100060')">복사</button>
-          </div>
-        </div>
-      </div>
+    <div class="account-box">
+      <div class="page6-name" onclick="toggleAccount(this)">김진섭</div>
+      <div class="account-info"><div class="account-details"><span class="account-number">국민 613402-04-143936</span><button class="copy-btn" onclick="copyAccount(event,'국민 61340204143936')">복사</button></div></div>
+    </div>
+    <div class="account-box">
+      <div class="page6-name" onclick="toggleAccount(this)">김영도</div>
+      <div class="account-info"><div class="account-details"><span class="account-number">하나 161-18-22890-5</span><button class="copy-btn" onclick="copyAccount(event,'하나 16118228905')">복사</button></div></div>
+    </div>
+    <div class="account-box">
+      <div class="page6-name" onclick="toggleAccount(this)">권혁자</div>
+      <div class="account-info"><div class="account-details"><span class="account-number">농협 8150-8456-3659-33</span><button class="copy-btn" onclick="copyAccount(event,'농협 81508456365933')">복사</button></div></div>
+    </div>
+    <div class="account-box">
+      <div class="page6-name" onclick="toggleAccount(this)">송송이</div>
+      <div class="account-info"><div class="account-details"><span class="account-number">신한 110-318-520610</span><button class="copy-btn" onclick="copyAccount(event,'신한 110318520610')">복사</button></div></div>
+    </div>
+    <div class="account-box">
+      <div class="page6-name" onclick="toggleAccount(this)">도경순</div>
+      <div class="account-info"><div class="account-details"><span class="account-number">농협 335-12-100060</span><button class="copy-btn" onclick="copyAccount(event,'농협 33512100060')">복사</button></div></div>
     </div>
 
-
-    <div class="copy-notification" id="copyNotification">
-      계좌번호가 복사되었습니다
-    </div>
+    <div class="copy-notification" id="copyNotification">계좌번호가 복사되었습니다</div>
   </div>
-
 </section>
 
-
-  <script src="script-account.js"></script>
-
+<script src="script-account.js"></script>
 
 </body>
 </html>
-
