@@ -477,7 +477,7 @@ body, img, div, section {
 }
 
 .page4 .section-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 300;
     text-align: center;
     color: #250601;
@@ -669,6 +669,8 @@ body, img, div, section {
 
     .bus-info p {
         white-space: normal; /* 모바일에서는 줄바꿈 허용 */
+        letter-spacing: 0.5px;
+
     }
 }
 
@@ -684,10 +686,12 @@ body, img, div, section {
 
 .section-title5 {
     font-weight: 100;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 40px;
     text-align: center;
     font-family: 'Pretendard', sans-serif;
+    letter-spacing: 3px;
+
 }
 
 .insta-gallery {
@@ -801,7 +805,7 @@ body, img, div, section {
     font-family: 'Pretendard', sans-serif;
     color: #250601;
     margin-bottom: 12px;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
 }
 
 .page6-note {
