@@ -43,10 +43,17 @@ body::before {
     font-size: 0.7rem;
     font-weight: 300;
     color: rgba(37, 6, 1, 0.3);
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     z-index: 1000;
     pointer-events: none;
     user-select: none;
+    white-space: nowrap; /* 한 줄로 유지 */
+    width: max-content;
+    /* 은은한 배경 */
+    padding: 6px 16px;
+    background: rgba(233, 231, 225, 0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
 }
 
 /* 이미지 확대/드래그/길게누르기 방지 */
@@ -299,6 +306,8 @@ body, img, div, section {
     justify-content: center;
     font-size: 0.9rem;
     transform: translateX(-17px);
+    white-space: nowrap; /* 한 줄로 유지 */
+
 }
 
 .prefix {
