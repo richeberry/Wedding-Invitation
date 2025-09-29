@@ -65,20 +65,16 @@
   window.addEventListener('resize', setVhUnit);
   window.addEventListener('load', setVhUnit);
 
-// <head> 안이나 DOMContentLoaded 이후 실행 - 페이지 화면 계산 후 넣기
-//페이지 높이 고정
-function setVh() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-setVh();
-window.addEventListener('resize', setVh);
+ // 최초 화면 높이를 계산해서 CSS 변수로 저장
+  function setFixedVh() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
 
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(setVh, 100);
-});
+  // 최초 로드 시 한 번만 실행
+  window.addEventListener('load', setFixedVh);
+
+  // resize 이벤트 무시 → 스크롤/하단 바 변경에도 높이 변하지 않음
 </script>
 
 </head>
